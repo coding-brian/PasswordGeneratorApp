@@ -12,6 +12,7 @@
 
 * {
   font-family: 'JetBrains Mono', monospace;
+  box-sizing: border-box;
 }
 
 .heading-l {
@@ -28,27 +29,52 @@
   color: var(--almost-white);
 }
 
+.body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  line-height: 23px;
+  font-weight: bold;
+}
+
 input[type='range'] {
   -webkit-appearance: none;
-  max-width: 476px;
-  max-height: 28px;
-  outline: none; /* 避免點選會有藍線或虛線 */
-  background-color: var(--very-dark-grey);
+  max-height: 8px;
+  outline: none;
+  /* background: linear-gradient(to right, var(--neon-green) 50%, var(--very-dark-grey) 50%); */
 }
 
 input[type='range']::-webkit-slider-thumb {
-  -webkit-appearance: none; /* 移除預設樣式 */
-  height: 28px; /* 圈圈大小 */
+  -webkit-appearance: none;
+  height: 28px;
   width: 28px;
-  background: var(--almost-white); /* 圈圈顏色 */
-  border-radius: 50%; /* 圓形圈圈 */
+  background: var(--almost-white);
+  border-radius: 50%;
   cursor: pointer;
 }
 
-input[type='range']::before {
-  content: ''; /* 加入內容 */
-  max-height: 28px; /* 高度與滑動條一致 */
-  background: var(--neon-green); /* 已滑動部分顏色 */
-  z-index: 1;
-  pointer-events: none; /* 不可點擊 */
+input[type='range']::-webkit-slider-thumb:hover {
+  -webkit-appearance: none;
+  box-shadow: 0 0 0 2px var(--neon-green);
+  background: var(--very-dark-grey);
+}
+
+/* 隱藏預設樣式 */
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0 24px 0 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--almost-white);
+  outline: none;
+  cursor: pointer;
+}
+
+/* 勾選時的背景顏色 */
+input[type='checkbox']:checked {
+  border: 2px solid var(--neon-green);
+  background-color: var(--neon-green); /* 勾選後背景色 */
+  background-image: url('./icon-check.svg');
+  background-repeat: no-repeat;
+  background-position: center;
 }

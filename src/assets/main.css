@@ -15,6 +15,7 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 31px;
 }
 
@@ -46,11 +47,16 @@ img {
   color: var(--almost-white);
 }
 
+.copy-img {
+  cursor: pointer;
+}
+
 .condition-container {
   padding: 24px 32px 32px 32px;
   display: flex;
   flex-direction: column;
   gap: 32px;
+  background-color: var(--dark-grey);
 }
 
 .character-length-container {
@@ -79,10 +85,59 @@ img {
   gap: 20px;
 }
 
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
 .strength-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  background-color: var(--very-dark-grey);
+  padding: 20px 32px 20px 32px;
+}
+
+.strength-figure {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.strength-figure-title {
+  margin-right: 16px;
+  color: var(--almost-white);
+}
+
+.figure {
+  display: flex;
+  gap: 8px;
+}
+
+.rectangle {
+  width: 10px;
+  height: 28px;
+  border: 2px var(--almost-white) solid;
+}
+
+.rectangle.too-week {
+  background-color: var(--red);
+  border: none;
+}
+
+.rectangle.week {
+  background-color: var(--orange);
+  border: none;
+}
+
+.rectangle.medium {
+  background-color: var(--yellow);
+  border: none;
+}
+
+.rectangle.strong {
+  background-color: var(--neon-green);
+  border: none;
 }
 
 .button {
