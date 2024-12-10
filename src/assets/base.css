@@ -1,0 +1,54 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+  --dark-grey: #24232c;
+  --grey: #817d92;
+  --almost-white: #e6e5ea;
+  --very-dark-grey: #18171f;
+  --neon-green: #a4ffaf;
+  --red: #f64a4a;
+  --orange: #fb7c58;
+  --yellow: #f8cd65;
+}
+
+* {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.heading-l {
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 43px;
+  color: var(--almost-white);
+}
+
+.heading-m {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 31px;
+  color: var(--almost-white);
+}
+
+input[type='range'] {
+  -webkit-appearance: none;
+  max-width: 476px;
+  max-height: 28px;
+  outline: none; /* 避免點選會有藍線或虛線 */
+  background-color: var(--very-dark-grey);
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none; /* 移除預設樣式 */
+  height: 28px; /* 圈圈大小 */
+  width: 28px;
+  background: var(--almost-white); /* 圈圈顏色 */
+  border-radius: 50%; /* 圓形圈圈 */
+  cursor: pointer;
+}
+
+input[type='range']::before {
+  content: ''; /* 加入內容 */
+  max-height: 28px; /* 高度與滑動條一致 */
+  background: var(--neon-green); /* 已滑動部分顏色 */
+  z-index: 1;
+  pointer-events: none; /* 不可點擊 */
+}

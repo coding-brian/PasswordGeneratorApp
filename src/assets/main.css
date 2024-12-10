@@ -1,0 +1,99 @@
+@import './base.css';
+
+body {
+  background-color: var(--very-dark-grey);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  line-height: 23px;
+  font-weight: bold;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 31px;
+}
+
+img {
+  object-fit: contain;
+}
+
+.title {
+  color: var(--grey);
+}
+
+.generator {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.password-container {
+  background-color: var(--dark-grey);
+  padding: 19px 32px 19px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  width: 540px;
+  max-height: 80px;
+}
+
+.password {
+  color: var(--almost-white);
+}
+
+.condition-container {
+  padding: 24px 32px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.character-length-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.character-length {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.character-length .title {
+  color: var(--almost-white);
+}
+
+.character-length .number {
+  color: var(--neon-green);
+}
+
+.condition {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.strength-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.button {
+  background-color: var(--neon-green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65px;
+}
+
+.button .text {
+  color: var(--dark-grey);
+  margin-right: 24px;
+}
