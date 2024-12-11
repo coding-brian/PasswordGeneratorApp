@@ -141,14 +141,37 @@ img {
 }
 
 .button {
+  border: 0px;
   background-color: var(--neon-green);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 65px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--dark-grey);
+  border: 2px var(--neon-green) solid;
+}
+
+.button:hover .text {
+  color: var(--neon-green);
+}
+
+.button:hover .arrow-right {
+  background-image: url('./icon-arrow-right-green.svg');
 }
 
 .button .text {
   color: var(--dark-grey);
   margin-right: 24px;
+}
+
+.arrow-right {
+  background-image: url('./icon-arrow-right.svg');
+  width: 12px;
+  height: 12px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
