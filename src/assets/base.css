@@ -39,6 +39,7 @@
 input[type='range'] {
   -webkit-appearance: none;
   max-height: 8px;
+  width: 100%;
   outline: none;
   background-color: var(--very-dark-grey);
 }
@@ -81,4 +82,10 @@ input[type='checkbox']:checked {
 
 label {
   cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  /* .heading-m {
+    font-size: 16px;
+  } */
 }

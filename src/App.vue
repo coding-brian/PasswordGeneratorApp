@@ -1,6 +1,8 @@
 <script setup>
-import { computed, reactive, ref } from 'vue'
+import { computed, isRef, reactive, ref } from 'vue'
+import { useMediaQuery } from '@vueuse/core'
 
+const isMobile = useMediaQuery('(max-width: 480px)')
 const password = ref('')
 const copyResult = ref(false)
 const conditionType = {
@@ -77,6 +79,9 @@ const strengthFigure = computed(() => {
 
   return result
 })
+
+const isShowCopied = computed(() => !isMobile.value || password.value.length <= 15)
+
 const rangeHandler = (el) => {
   const percentage = (characterLength.value / characterLength.max) * 100
   el.target.style.background = `linear-gradient(to right, var(--neon-green) ${percentage}%,var(--very-dark-grey) 0%)`
@@ -86,6 +91,7 @@ const copy = async () => {
   if (password.value) {
     await navigator.clipboard.writeText(password.value)
     copyResult.value = true
+    showCopiedAlert()
   }
 }
 
@@ -128,17 +134,28 @@ const generate = () => {
   range.value.value = characterLength.value
   range.value.dispatchEvent(new Event('input'))
 }
+
+const showCopiedAlert = () => {
+  if (!isShowCopied.value) {
+    alert('Copied!')
+  }
+}
 </script>
 
 <template>
   <main>
-    <span class="title heading-m">Password Generator</span>
+    <span class="title heading-m" :class="{ 'font-size-m': isMobile }">Password Generator</span>
     <div class="generator">
       <div class="password-container">
-        <span class="password heading-l" v-if="copyResult">{{ password }}</span>
-        <span class="password password-copy heading-l" v-else>{{ password }}</span>
+        <span
+          class="password"
+          :class="{ 'password-copy': copyResult, 'heading-l': !isMobile, 'heading-m': isMobile }"
+          >{{ password }}</span
+        >
         <div class="copy-container">
-          <span class="copy-text body" v-if="copyResult">COPIED</span>
+          <template v-if="isShowCopied">
+            <span class="copy-text body" v-if="copyResult">COPIED</span>
+          </template>
           <div class="copy-img" @click="copy"></div>
         </div>
       </div>
@@ -146,16 +163,20 @@ const generate = () => {
         <div class="character-length-container">
           <div class="character-length">
             <span class="title heading-m">Character Length</span>
-            <span class="number heading-l">{{ characterLength.value }}</span>
+            <span class="number" :class="{ 'heading-l': !isMobile, 'heading-m': isMobile }">{{
+              characterLength.value
+            }}</span>
           </div>
-          <input
-            type="range"
-            ref="range"
-            :min="characterLength.min"
-            :max="characterLength.max"
-            v-model="characterLength.value"
-            @input="rangeHandler"
-          />
+          <div class="range-container">
+            <input
+              type="range"
+              ref="range"
+              :min="characterLength.min"
+              :max="characterLength.max"
+              v-model.number="characterLength.value"
+              @input="rangeHandler"
+            />
+          </div>
         </div>
         <div class="condition">
           <div class="checkbox-container" v-for="condition in conditions" :key="condition.type">
@@ -165,13 +186,19 @@ const generate = () => {
               v-model="selectedConditions"
               :id="condition.type"
             />
-            <label class="heading-m" :for="condition.type">{{ condition.name }}</label>
+            <label class="heading-m" :class="{ 'font-size-m': isMobile }" :for="condition.type">{{
+              condition.name
+            }}</label>
           </div>
         </div>
         <div class="strength-container">
-          <span class="title body">STRENGTH</span>
+          <span class="title body" :class="{ 'font-size-m': isMobile }">STRENGTH</span>
           <div class="strength-figure" v-if="strengthFigure">
-            <span class="strength-figure-title heading-m">{{ strengthFigure.name }}</span>
+            <span
+              class="strength-figure-title"
+              :class="{ 'heading-m': !isMobile, body: isMobile }"
+              >{{ strengthFigure.name }}</span
+            >
             <div class="figure">
               <div
                 v-for="(count, index) in strengthFigure.count"
@@ -187,7 +214,7 @@ const generate = () => {
           </div>
         </div>
         <button class="button" @click="generate">
-          <span class="text heading-m">GENERATE</span>
+          <span class="text heading-m" :class="{ 'font-size-m': isMobile }">GENERATE</span>
           <div class="arrow-right"></div>
         </button>
       </div>
