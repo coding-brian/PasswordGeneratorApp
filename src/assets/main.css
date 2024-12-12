@@ -69,7 +69,7 @@ img {
 .character-length {
   display: flex;
   justify-content: space-between;
-  align-content: center;
+  align-items: center;
 }
 
 .character-length .title {
@@ -199,6 +199,14 @@ img {
 
 .copy-img:hover {
   background-image: url('./icon-copy-white.svg');
+}
+
+/* 桌機（769px 以上） */
+@media (min-width: 769px) {
+  /* 桌機樣式 */
+  .generator {
+    width: 540px;
+  }
 }
 
 /* 平板（481px ~ 768px） */

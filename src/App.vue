@@ -46,7 +46,7 @@ const characterLength = reactive({
 const range = ref(null)
 
 const strengthFigure = computed(() => {
-  if (selectedConditions.value.length <= 0) return null
+  if (selectedConditions.value.length < 0) return null
   const result = {
     name: '',
     total: 4,
@@ -162,7 +162,7 @@ const showCopiedAlert = () => {
       <div class="condition-container">
         <div class="character-length-container">
           <div class="character-length">
-            <span class="title heading-m">Character Length</span>
+            <span class="title body">Character Length</span>
             <span class="number" :class="{ 'heading-l': !isMobile, 'heading-m': isMobile }">{{
               characterLength.value
             }}</span>
@@ -186,15 +186,19 @@ const showCopiedAlert = () => {
               v-model="selectedConditions"
               :id="condition.type"
             />
-            <label class="heading-m" :class="{ 'font-size-m': isMobile }" :for="condition.type">{{
-              condition.name
-            }}</label>
+            <label
+              class="body almost-white"
+              :class="{ 'font-size-m': isMobile }"
+              :for="condition.type"
+              >{{ condition.name }}</label
+            >
           </div>
         </div>
         <div class="strength-container">
           <span class="title body" :class="{ 'font-size-m': isMobile }">STRENGTH</span>
-          <div class="strength-figure" v-if="strengthFigure">
+          <div class="strength-figure">
             <span
+              v-if="strengthFigure"
               class="strength-figure-title"
               :class="{ 'heading-m': !isMobile, body: isMobile }"
               >{{ strengthFigure.name }}</span

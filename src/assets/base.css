@@ -15,6 +15,10 @@
   box-sizing: border-box;
 }
 
+.almost-white {
+  color: var(--almost-white);
+}
+
 .heading-l {
   font-size: 32px;
   font-weight: bold;
@@ -82,10 +86,4 @@ input[type='checkbox']:checked {
 
 label {
   cursor: pointer;
-}
-
-@media (max-width: 480px) {
-  /* .heading-m {
-    font-size: 16px;
-  } */
 }
